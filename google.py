@@ -26,14 +26,18 @@ def findMax(filteredMap):
     
 def topMovieByRating(movies):
     
-    filteredMap = {}
+    filteredMovies = {}
     
     for movie in movies.keys():
-        filteredMap[movie] = {}
-        filteredMap[movie]["averageRating"] = float(movies.get(movie)["averageRating"])
-        filteredMap[movie]["ratingCount"] = movies.get(movie)["ratingCount"]
+        filteredMovies[movie] = {}
+        filteredMovies[movie]["averageRating"] = float(movies.get(movie)["averageRating"])
+        filteredMovies[movie]["ratingCount"] = movies.get(movie)["ratingCount"]
+#     print movies.get(144)["ratingCount"] = movies.get(movie)["ratingCount"]
     
-    return findMax(movies)
+    if len(filteredMovies) > 0:
+        return findMax(filteredMovies)
+    else :
+        return 0
 
 def topMovieByGenre(movies,genre):
     
@@ -47,7 +51,10 @@ def topMovieByGenre(movies,genre):
             filteredMovies[movie]["averageRating"] = float(movies.get(movie)["averageRating"])
             filteredMovies[movie]["ratingCount"] = movies.get(movie)["ratingCount"]
             
-    return findMax(filteredMovies)
+    if len(filteredMovies) > 0:
+        return findMax(filteredMovies)
+    else :
+        return 0
 
 
 def topMovieByYear(movies,year):
@@ -61,5 +68,24 @@ def topMovieByYear(movies,year):
             filteredMovies[movie]["averageRating"] = float(movies.get(movie)["averageRating"])
             filteredMovies[movie]["ratingCount"] = movies.get(movie)["ratingCount"]
             
-    return findMax(filteredMovies)
+    if len(filteredMovies) > 0:
+        return findMax(filteredMovies)
+    else :
+        return 0
 
+def topMovieByYearAndGenre(movies,year,genre):
+    filteredMovies = {}
+    
+    for movie in movies.keys():
+        movie= int(movie)
+        
+        if(movies.get(movie)["year"] == year and genre in movies.get(movie)["genre"]):
+            filteredMovies[movie] = {}
+            filteredMovies[movie]["averageRating"] = float(movies.get(movie)["averageRating"])
+            filteredMovies[movie]["ratingCount"] = movies.get(movie)["ratingCount"]
+      
+#     print filteredMovies   
+    if len(filteredMovies) > 0:
+        return findMax(filteredMovies)
+    else :
+        return 0

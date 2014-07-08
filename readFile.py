@@ -1,5 +1,4 @@
 import re
-import google
 
 def readTheFile(fileName):
     File = open(fileName)
