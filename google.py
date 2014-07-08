@@ -89,3 +89,37 @@ def topMovieByYearAndGenre(movies,year,genre):
         return findMax(filteredMovies)
     else :
         return 0
+    
+def findMaximum(filteredMap):
+    filteredMapKeys = filteredMap.keys()
+    maxId = int(filteredMapKeys[0])
+    filteredMapKeys.remove(maxId)
+    maxRatingCount =  filteredMap.get(maxId)
+     
+    for Map in filteredMap.keys():
+        tempId = int(Map)
+        tempMaxRatingCount = filteredMap.get(tempId)
+        if  tempMaxRatingCount > maxRatingCount:
+            maxId = tempId
+            maxRatingCount = tempMaxRatingCount
+            
+    return maxId
+
+def mostWatchedMovie(movies):
+    
+    filteredMovies = {}
+    
+    for movie in movies.keys():
+        movie = int(movie)
+        filteredMovies[movie] = movies.get(movie)["ratingCount"]
+        
+    return findMaximum(filteredMovies)
+
+def mostActiveUser(users):
+    filteredUsers = {}
+    
+    for user in users.keys():
+        user = int(user)
+        filteredUsers[user] = users.get(user)["numberOfTimesRated"]
+        
+    return findMaximum(filteredUsers)
